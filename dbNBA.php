@@ -34,6 +34,19 @@ class dbNBA
     }
   }
 
+  function devolverEquipos(){
+    $tabla=[];
+    if($this->error==false){
+      $resultado = $this->conexion->query("SELECT * FROM equipos");
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
   //function insercion contra la tabla equipos
   public function insertarEquipo($nombre,$ciudad,$conferencia,$division){
     if($this->error==false)
